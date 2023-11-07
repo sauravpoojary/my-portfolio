@@ -1,13 +1,16 @@
 import "./App.css";
-import { NavBar } from "./components";
-import Home from "./components/Home";
-
+import { NavBar, Home, SocialLinks, About, Portfolio, Experience, Contact } from "./components";
 
 function App() {
   return (
     <>
       <NavBar />
       <Home />
+      <About />
+      <Portfolio />
+      <Experience />
+      <Contact />
+      <SocialLinks />
     </>
   );
 }

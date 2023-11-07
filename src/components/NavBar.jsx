@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
@@ -12,7 +13,7 @@ const NavBar = () => {
     },
     {
       id: 2,
-      link: "About Me",
+      link: "About",
     },
     {
       id: 3,
@@ -20,7 +21,7 @@ const NavBar = () => {
     },
     {
       id: 4,
-      link: "Contact Me",
+      link: "Contact",
     },
   ];
   return (
@@ -33,9 +34,11 @@ const NavBar = () => {
         {links.map((link) => (
           <li
             key={link.id}
-            className="px-4 cursor-pointer font-medium hover:font-bold hover:scale-105 duration-200"
+            className="px-4 cursor-pointer text-2xl font-medium hover:font-bold hover:scale-105 duration-200"
           >
-            {link.link}
+            <Link to={link.link} smooth duration={500}>
+              {link.link}
+            </Link>
           </li>
         ))}
       </ul>
@@ -47,10 +50,9 @@ const NavBar = () => {
         {nav ? <FaTimes /> : <FaBars size={30} />}
       </div>
 
-      {
-        nav ?  (
-            <ul
-        className="flex 
+      {nav ? (
+        <ul
+          className="flex 
       flex-col 
       justify-center 
       items-center 
@@ -62,18 +64,19 @@ const NavBar = () => {
       bg-gradient-to-b
       from-rose-400
       to-rose-300"
-      >
-        {links.map((link) => (
-          <li
-            key={link.id}
-            className="px-4 cursor-pointer py-6 text-4xl font-medium hover:font-bold hover:scale-105 duration-200"
-          >
-            {link.link}
-          </li>
-        ))}
-      </ul>
-        ) : null
-      }
+        >
+          {links.map((link) => (
+            <li
+              key={link.id}
+              className="px-4 cursor-pointer py-6 text-4xl font-medium hover:font-bold hover:scale-105 duration-200"
+            >
+              <Link onClick={() => setNav(!nav)} to={link.link} smooth duration={500}>
+                {link.link}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 };
